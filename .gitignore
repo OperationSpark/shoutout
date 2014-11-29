@@ -4,6 +4,7 @@
 .sass-cache/
 npm-debug.log
 node_modules/
+cert/
 www/components/
 app/tests/coverage/
 .bower-*/
