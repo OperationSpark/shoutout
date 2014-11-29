@@ -1,0 +1,14 @@
+.DS_Store
+/dist
+.nodemonignore
+.sass-cache/
+npm-debug.log
+node_modules/
+www/components/
+app/tests/coverage/
+.bower-*/
+.idea/
+projectFilesBackup/
+config/.env
+.env
+.c9
