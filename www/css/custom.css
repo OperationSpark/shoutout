@@ -1,4 +1,4 @@
-body {
+body, .ion-content,  {
 	background: #f7f6f1;
 	padding-bottom: 25px;
 }
@@ -32,10 +32,6 @@ h3 {
 	background-color: #fff;
 }
 
-.main {
-	margin-top: 55px;
-}
-
 .btn {
 	display: block;
 	width: 100%;
@@ -66,7 +62,6 @@ h3 {
 	background: #fff;
 	border: 1px solid #ccc;
 	padding: 10px 15px;
-	margin-bottom: 20px;
 	position: relative;
 	
 }
@@ -103,7 +98,6 @@ h3 {
 
 .author-img img {
 	border-radius: 50px;
-	margin-left: 15px;
 }
 
 .shout-info {
@@ -114,4 +108,14 @@ h3 {
 .glyphicon-bullhorn {
 	font-size: 25px;
 }
+
+/* Ionic overrides */
+
+/*.item {
+	border: none;
+}
+
+.item-complex .item-content {
+	padding: 0px 49px 0px 16px;
+}*/
 
