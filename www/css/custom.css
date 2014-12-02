@@ -92,3 +92,7 @@ ion-content {
 	text-transform: uppercase;
 }
 
+ion-side-menu .list {
+	margin-top: 44px;
+}
+
