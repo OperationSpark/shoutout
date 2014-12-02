@@ -3,7 +3,7 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-          <ion-list>
+          <ion-list class="shouts">
             <ion-item ng-repeat="shout in shouts" href="#/app/shouts/{{shout.id}}">
               <div class="shout-wrapper row">
                     <div class="author-img col">
@@ -14,7 +14,7 @@
                       {{shout.title}} 
 
                       <div class="shout-info clearfix">
-                        <span class="shout-author pull-left">by Carl</span><span class="shout-date pull-right">June 26, 1969</span>
+                        <span class="shout-author">by Carl</span><span class="shout-date">June 26, 1969</span>
                       </div>
 
                     </div> 
