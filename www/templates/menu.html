@@ -13,19 +13,19 @@
     </header>
     
       <ion-list>
-        <ion-item nav-clear menu-close class="item-icon-left" ng-click="login()">
-          <i class="icon ion-log-in"></i>
+        <ion-item nav-clear menu-close ng-click="login()">
+          <i class="icon ion-logout"></i>
           {{txtLogAction}}
         </ion-item>
-        <ion-item nav-clear menu-close class="item-icon-left" href="#/app/shoutout">
+        <ion-item nav-clear menu-close  href="#/app/shoutout">
           <i class="icon ion-plus-round"></i>
           Shoutout
         </ion-item>
-        <ion-item nav-clear menu-close class="item-icon-left" href="#/app/shouts">
+        <ion-item nav-clear menu-close  href="#/app/shouts">
           <i class="icon ion-speakerphone"></i>
           Shouts
         </ion-item>
-        <ion-item ng-if="isLoggedIn()" nav-clear menu-close class="item-icon-left" href="#/app/profile">
+        <ion-item ng-if="isLoggedIn()" nav-clear menu-close href="#/app/profile">
           <i class="icon ion-person"></i>
           Profile
         </ion-item>

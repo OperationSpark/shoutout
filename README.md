@@ -54,19 +54,31 @@ In the following lesson you'll edit the HTML and CSS to change the look of the a
 Ionic is an HTML5 mobile app development framework targeted at building hybrid mobile apps. Hybrid apps are essentially small websites running in a browser shell in an app that have access to the native platform layer. Hybrid apps have many benefits over pure native apps, specifically in terms of platform support, speed of development, and access to 3rd party code.
 
 ## HTML
-Ionic uses their own custom HTML tags such as <ion-content>, <ion-list>, and <ion-item>. Most of the tags are self explanatory when you look at content or list, for example.  
+Ionic uses their own custom HTML tags such as `<ion-content>`, `<ion-list>`, and `<ion-item>`. Most of the tags are self explanatory when you look at content or list, for example.  
 
 ## CSS
 Edit the custom.css inside the css/ directory and follow the instructions inside of each CSS selector. 
 
-## The menu 
-The menu.html file inside of the templates/ directory is responsible for the sidemenu on the left. The first menu item, which is for logging in and out, has been included for you to see as an example. It is missing the icon. Visit the [ionicons website](http://ionicons.com/) and choose the icon that you think should be used for the log in and out menu item. You insert icons by using the <i> html tag with classes that reference a specific icon. 
+```CSS
+.shouts .item {
+	/* Remove the border */
+}
+```
 
-<i class="icon ion-document"></i>
+Make it your own by choosing your own background colors, font colors, spacing, and borders. Remember that color scheme is important! Check out [Adobe Color](https://color.adobe.com/explore/newest/?time=all) to explore some nice color schemes.  
+
+## The menu 
+The menu.html file inside of the templates/ directory is responsible for the sidemenu on the left. The first menu item, which is for logging in and out, has been included for you to see as an example. It is missing the icon. Visit the [ionicons website](http://ionicons.com/) and choose the icon that you think should be used for the log in and out menu item. You insert icons by using the `<i>` html tag with classes that reference a specific icon. 
+
+
+`<i class="icon ion-document"></i>`
+
 
 You need to include the icon class and then the class for the specific icon. You can find the class of an icon by clicking on the icon on the website. 
 
-For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. 
+For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. You can copy and paste the first menu item to make the rest. Remove the `ng-click="login()"` since that only applies to the login link. Create two more menu items called "Shouts" and "Profile." Choose proper icons for them as well. 
+
+Save your work and view the menu. You should see an icon to the left of the text for each menu item. 
 
 
 
