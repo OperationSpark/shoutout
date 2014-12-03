@@ -83,7 +83,7 @@ angular.module('shoutout.controllers', [])
     // TODO : MOVE TO SERVICE //
     $scope.shouts = [
         { title: 'John Fraboni did the deed!', id: 1 },
-        { title: 'Max is Bomb!', id: 2 },
+        { title: 'Max is the Bomb!', id: 2 },
         { title: 'Grace killed it!', id: 3 },
         { title: 'Matt is Amazing!', id: 4 },
         { title: 'Danielle is a Saint!', id: 5 },

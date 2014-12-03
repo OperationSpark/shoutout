@@ -96,3 +96,7 @@ ion-side-menu .list {
 	margin-top: 44px;
 }
 
+.has-header {
+	top: 64px;
+}
+
