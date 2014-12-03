@@ -24,16 +24,17 @@ The user interface is the space where interaction between humans and machines oc
 
 ## Wireframing
 ![](http://www.flairbuilder.com/img/wireframe-samples/wireframe-example-large-1.png)
-<img src="http://www.flairbuilder.com/img/wireframe-samples/wireframe-example-large-1.png" width="200px" />
+
 
 ## Colors
 ![](https://cdn.tutsplus.com/gamedev/authors/legacy/Tyler%20Seitz/2012/10/13/ColorWheel-Base.png)
 ![](http://www.color-hex.com/palettes/185.png)
 
 ## Logos
-![](http://img2.wikia.nocookie.net/__cb20130408234459/logopedia/images/c/ce/Disney.svg)
-![](http://img3.wikia.nocookie.net/__cb20110518181144/logopedia/images/7/7b/746px-Coca-Cola_logo_svg.png)
-![](http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/834px-Apple_logo_black.svg.png)
+
+<img src="http://img2.wikia.nocookie.net/__cb20130408234459/logopedia/images/c/ce/Disney.svg" width="300px" />
+<img src="http://img3.wikia.nocookie.net/__cb20110518181144/logopedia/images/7/7b/746px-Coca-Cola_logo_svg.png" width="300px" />
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/834px-Apple_logo_black.svg.png" width="200px" />
 
 ## Fonts
 
