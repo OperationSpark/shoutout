@@ -47,6 +47,27 @@ A logo is the graphical mark used to represent your brand. Logos are either pure
 ## Icons
 Icons serve an important place in web design. They help users navigate without using text links and help enrich interfaces without taking up a lot of space. 
 
+# Lesson 
+In the following lesson you'll edit the HTML and CSS to change the look of the app.
+
+## What is Ionic, and where does it fit?
+Ionic is an HTML5 mobile app development framework targeted at building hybrid mobile apps. Hybrid apps are essentially small websites running in a browser shell in an app that have access to the native platform layer. Hybrid apps have many benefits over pure native apps, specifically in terms of platform support, speed of development, and access to 3rd party code.
+
+## HTML
+Ionic uses their own custom HTML tags such as <ion-content>, <ion-list>, and <ion-item>. Most of the tags are self explanatory when you look at content or list, for example.  
+
+## CSS
+Edit the custom.css inside the css/ directory and follow the instructions inside of each CSS selector. 
+
+## The menu 
+The menu.html file inside of the templates/ directory is responsible for the sidemenu on the left. The first menu item, which is for logging in and out, has been included for you to see as an example. It is missing the icon. Visit the [ionicons website](http://ionicons.com/) and choose the icon that you think should be used for the log in and out menu item. You insert icons by using the <i> html tag with classes that reference a specific icon. 
+
+<i class="icon ion-document"></i>
+
+You need to include the icon class and then the class for the specific icon. You can find the class of an icon by clicking on the icon on the website. 
+
+For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. 
+
 
 
 

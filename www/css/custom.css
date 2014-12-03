@@ -1,5 +1,5 @@
 body, .ion-content, .view, .pane  {
-	background: #f7f6f1;
+	/* Change the background color */
 }
 
 .shout-item {
@@ -11,9 +11,28 @@ body, .ion-content, .view, .pane  {
 }
 
 .shouts .item {
-	border: none;
+	/* Remove the border */
 }
 
+
+.author-img img {
+	/* Make the image a circle */
+}
+
+.shout-info {
+	/* Change the color and add a margin on top */
+
+}
+
+.shout-date {
+	/* Align the text to the right side of the div */
+}
+
+.glyphicon-bullhorn {
+	font-size: 25px;
+	padding-right: 10px;
+	color: #06D9F2;
+}
 
 .shout-item:before {
 	top: 18px;
@@ -44,41 +63,20 @@ body, .ion-content, .view, .pane  {
 	position: absolute;
 }
 
-.author-img img {
-	border-radius: 50px;
-}
-
-.shout-info {
-	color: #aaa;
-	margin-top: 10px;
-}
-
-.shout-date {
-	float: right;
-}
-
-.glyphicon-bullhorn {
-	font-size: 25px;
-	padding-right: 10px;
-	color: #06D9F2;
-}
-
 /* Ionic overrides */
 
 
 .bar.bar-stable {
-border-color: #06D9F2;
-background-color: #30D1D6;
-background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-color: #fff;
+	/* Give the header a background, border, and change the color of the font */
+
 }
 
 .icon {
-	font-size: 35px;
+	/* Increase the font-size of the icons */ 
 }
 
 ion-content {
-	padding: 10px 20px;
+	/* Put some padding around the main content area */
 }
 
 .shouts .item-complex .item-content {
