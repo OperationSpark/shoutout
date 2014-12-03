@@ -27,16 +27,20 @@ The user interface is the space where interaction between humans and machines oc
 
 
 ## Colors
-![](https://cdn.tutsplus.com/gamedev/authors/legacy/Tyler%20Seitz/2012/10/13/ColorWheel-Base.png)
-![](http://www.color-hex.com/palettes/185.png)
+Colors are important. Different colors evoke different emotions, provide varying amounts of contrast, and ultimately have a major affect on *how users feel* while using a product. 
+
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Ryb-colorwheel.svg/540px-Ryb-colorwheel.svg.png" width="300px" /><br>
+<img src="http://www.color-hex.com/palettes/185.png" width="500px" />
 
 ## Logos
+A logo is the graphical mark used to represent your brand. Logos are either purely graphical, using just a symbol, purely text-based, or both. 
 
-<img src="http://img2.wikia.nocookie.net/__cb20130408234459/logopedia/images/c/ce/Disney.svg" width="300px" />
-<img src="http://img3.wikia.nocookie.net/__cb20110518181144/logopedia/images/7/7b/746px-Coca-Cola_logo_svg.png" width="300px" />
+<img src="http://img2.wikia.nocookie.net/__cb20130408234459/logopedia/images/c/ce/Disney.svg" width="300px" /><br>
+<img src="http://img3.wikia.nocookie.net/__cb20110518181144/logopedia/images/7/7b/746px-Coca-Cola_logo_svg.png" width="300px" /><br>
 <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/834px-Apple_logo_black.svg.png" width="200px" />
 
 ## Fonts
+
 
 ## Icons
 
