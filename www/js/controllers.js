@@ -1,10 +1,6 @@
-angular.module('shoutout.controllers', [])
+angular.module('shoutout.controllers', ['shoutout.services'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-    openFB.getLoginStatus(function (response) {
-        setStatus(response.status);
-    });
-
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, FacebookService) {
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
         scope: $scope
@@ -12,12 +8,10 @@ angular.module('shoutout.controllers', [])
         $scope.modal = modal;
     });
 
-    // Triggered in the login modal to close it
     $scope.closeLogin = function() {
         $scope.modal.hide();
     };
 
-    // Open the login modal
     $scope.login = function() {
         $scope.modal.show();
     };
@@ -28,35 +22,35 @@ angular.module('shoutout.controllers', [])
         } else {
             $scope.fbLogin();
         }
-
-    }
+    };
 
     $scope.fbLogin = function() {
-        openFB.login(
-            function(response) {
-                if (response.status === 'connected') {
-                    console.log('Facebook login succeeded');
-                    $scope.closeLogin();
-                } else {
-                    alert('Facebook login failed');
-                }
-                setStatus(response.status);
-            },
-            {scope: 'email,publish_actions'});
+        FB.login(function(response) {
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                $scope.closeLogin();
+            } else {
+                alert('Facebook login failed');
+            }
+            setStatus(response.status);
+        }, 
+        {scope: 'publish_actions'});
+        //     {scope: 'read_stream,email,publish_actions,publish_stream'});
     };
 
-    /**
-     * openFB.logout accepts a callback with no parameters, 
-     * so if the callback is invoked, assume we're logged out
-     */ 
     $scope.fbLogout = function() {
-        openFB.logout(
-            function() {
-                console.log('Facebook logout succeeded');
-                $scope.closeLogin();
-                setStatus('disconnected');
-          });
+        FB.logout(function(response) {
+            console.log('Facebook logout succeeded');
+            $scope.closeLogin();
+            setStatus('disconnected');
+        });
     };
+
+    $scope.getFbLoginStatus = function(callback) {
+        FB.getLoginStatus(function(response) {
+            setStatus(response.status);
+        });  
+    } 
 
     /**
      * Given the user's login status, set some values 
@@ -77,9 +71,21 @@ angular.module('shoutout.controllers', [])
     $scope.isLoggedIn = function () {
         return ($scope.status === 'connected');
     }
+
+    var init = function () {
+        var promise = FacebookService.init();
+        promise.then(function(FB) {
+          FB.getLoginStatus(function(response) {
+                setStatus(response.status);
+            });  
+        });
+    };
+    // and fire it after definition
+    init();
 })
 
 .controller('ShoutsCtrl', function($scope) {
+<<<<<<< HEAD
     // TODO : MOVE TO SERVICE //
     $scope.shouts = [
         { title: 'John Fraboni did the deed!', id: 1 },
@@ -94,17 +100,33 @@ angular.module('shoutout.controllers', [])
         for (var i = 0; i < $scope.shouts.length; i++) {
             if ($scope.shouts[i].id === id) {
                 return $scope.shouts[i];
+=======
+    FB.api(
+        "/498914393584826/feed",
+        function (response) {
+          if (response && !response.error) {
+            var posts = response.data;
+            var shouts = [];
+            for (var i = 0; i < posts.length; i++) {
+                var post = posts[i];
+                if (post.hasOwnProperty('message') && /^SHOUTOUT:/i.exec(post.message)) {
+                    shouts.push(post);    
+                }
+>>>>>>> 5c9f53149d0e7b6254f2215f7d7c930008c1c00b
             }
+            $scope.$apply(function() {
+                $scope.shouts = shouts;
+            });
+          }
         }
-        return null;
-    }
+    );
 })
 
 .controller('ShoutCtrl', function($scope, $stateParams) {
     // TODO : MOVE TO SERVICE //
     $scope.shouts = [
         { title: 'John Fraboni did the deed!', id: 1 },
-        { title: 'Max is Bomb!', id: 2 },
+        { title: 'Max is the Bomb!', id: 2 },
         { title: 'Grace killed it!', id: 3 },
         { title: 'Matt is Amazing!', id: 4 },
         { title: 'Danielle is a Saint!', id: 5 },
@@ -123,27 +145,42 @@ angular.module('shoutout.controllers', [])
         }
         return null;
     }
-
     $scope.shout = find($stateParams.shoutId);
 })
 
-.controller('ShoutoutCtrl', function($scope, $stateParams) {
-  $scope.share = function(event) {
-    openFB.api({
-        method: 'POST',
-        path: '/me/feed',
-        params: {
-            message: "I'll be attending: '" + $scope.session.title + "' by " +
-                $scope.session.speaker
-        },
-        success: function () {
-            alert('The session was shared on Facebook');
-        },
-        error: function () {
-            alert('An error occurred while sharing this session on Facebook');
+.controller('ShoutoutCtrl', function($scope, $state, $stateParams, ShoutService) {
+    $scope.shout = function(name, workplace) {
+        // TODO : Move this to form validation //
+        if (name) {
+            var shoutout = 'SHOUTOUT: ' + ShoutService.get(name);
+            if (workplace) {
+                shoutout += ' ' + name + ' works at ' + workplace + '!'
+            }
+            console.log(shoutout);
+            
+            FB.api(
+                '/498914393584826/feed', 
+                'post', 
+                {message: shoutout}, 
+                function function_name (response) {
+                    console.log('shoutout result:');
+                    console.log(response);
+                    $state.go("app.shouted", {shoutId: response.id});
+            });
+            //$state.go("app.shouted", {shoutId: "10152429278741922_10152437354521922"});
         }
-    });
-  };
+    };
+})
+
+.controller('ShoutedCtrl', function($scope, $state, $stateParams) {
+    FB.api(
+        $stateParams.shoutId,
+        function (response) {
+          if (response && !response.error) {
+                $scope.shoutout = response.message.replace('SHOUTOUT: ', '');
+          }
+        }
+    );
 })
 
 .controller('ProfileCtrl', function($scope) {

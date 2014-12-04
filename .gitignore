@@ -1,4 +1,5 @@
 .DS_Store
+/dev
 /dist
 .nodemonignore
 .sass-cache/

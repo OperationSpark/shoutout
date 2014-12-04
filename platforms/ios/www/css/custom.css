@@ -1,0 +1,98 @@
+body, .ion-content, .view, .pane  {
+	background: #f7f6f1;
+}
+
+.shout-item {
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 10px 15px;
+	position: relative;
+	
+}
+
+.shouts .item {
+	border: none;
+}
+
+
+.shout-item:before {
+	top: 18px;
+	left: -14px;
+	height: 0;
+	width: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 7.5px;
+	border-right-color: #fff;
+	z-index: 2;
+	}
+.shout-item:after {
+	top: 17px;
+	left: -16px;
+	z-index: 1;
+	height: 0;
+	width: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 8.5px;
+	border-right-color: silver;
+}
+
+.shout-item:before,.shout-item:after {
+	display: block;
+	content: " ";
+	position: absolute;
+}
+
+.author-img img {
+	border-radius: 50px;
+}
+
+.shout-info {
+	color: #aaa;
+	margin-top: 10px;
+}
+
+.shout-date {
+	float: right;
+}
+
+.glyphicon-bullhorn {
+	font-size: 25px;
+	padding-right: 10px;
+	color: #06D9F2;
+}
+
+/* Ionic overrides */
+
+
+.bar.bar-stable {
+border-color: #06D9F2;
+background-color: #30D1D6;
+background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+color: #fff;
+}
+
+.icon {
+	font-size: 35px;
+}
+
+ion-content {
+	padding: 10px 20px;
+}
+
+.shouts .item-complex .item-content {
+	background: #f7f6f1;
+	padding: 10px 0px 0px 0px;
+}
+
+.bar.bar-stable .title {
+	color: #fff;
+	font-size: 25px;
+	text-transform: uppercase;
+}
+
+ion-side-menu .list {
+	margin-top: 44px;
+}
+
