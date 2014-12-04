@@ -67,6 +67,9 @@ Edit the custom.css inside the css/ directory and follow the instructions inside
 
 Make it your own by choosing your own background colors, font colors, spacing, and borders. Remember that color scheme is important! Check out [Adobe Color](https://color.adobe.com/explore/newest/?time=all) to explore some nice color schemes.  
 
+## Editing and saving in Ionic
+When you save a file there's no need to refresh the page. The changes you make are updated in real time as soon as you save. 
+
 ## The menu 
 The menu.html file inside of the templates/ directory is responsible for the sidemenu on the left. The first menu item, which is for logging in and out, has been included for you to see as an example. It is missing the icon. Visit the [ionicons website](http://ionicons.com/) and choose the icon that you think should be used for the log in and out menu item. You insert icons by using the `<i>` html tag with classes that reference a specific icon. 
 
@@ -74,11 +77,26 @@ The menu.html file inside of the templates/ directory is responsible for the sid
 `<i class="icon ion-document"></i>`
 
 
-You need to include the icon class and then the class for the specific icon. You can find the class of an icon by clicking on the icon on the website. 
+You need to include the icon class and then the class for the specific icon. Find the class of an icon by clicking on the icon on the website. 
 
 For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. You can copy and paste the first menu item to make the rest. Remove the `ng-click="login()"` since that only applies to the login link. Create two more menu items called "Shouts" and "Profile." Choose proper icons for them as well. 
 
 Save your work and view the menu. You should see an icon to the left of the text for each menu item. 
+
+The menu should now look something like the image below.
+<img src="http://cl.ly/image/0B1d3q2C0K1q" />
+
+This is a good start but the icons and text are too small. How can you increase the size of the icons and menu items? With CSS! Let's go into the custom.css file in /css to make some edits. Find the `.icon` selector and set the font size to 25 pixels. Save the file to look at your changes. You can see that the icons are now bigger. Now let's do the same for the text. Find the `.menu .item` selector and set the font size to 20 pixels. You can see that the icons don't line up vertically centered with the text. Add an `item-icon-left` class to each `ion-item` element to make that happen. Now our menu is done!
+
+## New Shout Out page and forms
+Now we're going to style the page where you can add a shout out. The main element in this page is the form. Forms are a great way to collect data from users. In most cases users submit a form and the data is sent to a server for processing. 
+
+When you post on Facebook you are submitting a form:
+<img src="http://cl.ly/image/2M2p3D3j1I1V" />
+
+In our case, the form creates a post on Facebook. 
+
+
 
 
 

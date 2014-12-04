@@ -28,6 +28,15 @@ body, .ion-content, .view, .pane  {
 	/* Align the text to the right side of the div */
 }
 
+.icon {
+	/* Increase the font-size of the icons */ 
+	font-size: 25px;
+}
+
+.menu .item {
+	font-size: 20px;
+}
+
 .glyphicon-bullhorn {
 	font-size: 25px;
 	padding-right: 10px;
@@ -71,9 +80,7 @@ body, .ion-content, .view, .pane  {
 
 }
 
-.icon {
-	/* Increase the font-size of the icons */ 
-}
+
 
 ion-content {
 	/* Put some padding around the main content area */
