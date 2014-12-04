@@ -11,10 +11,9 @@
                     </div>
                     
                     <div class="shout-item col col-75">
-                      {{shout.title}} 
-
+                      {{shout.message.replace('SHOUTOUT: ', '')}} 
                       <div class="shout-info clearfix">
-                        <span class="shout-author">by Carl</span><span class="shout-date">June 26, 1969</span>
+                        <span class="shout-author">from {{shout.from.name}}</span><span class="shout-date">{{shout.created_time.substring(0, 10)}}</span>
                       </div>
 
                     </div> 
@@ -26,5 +25,3 @@
           </ion-list>
   </ion-content>
 </ion-view>
-
-
