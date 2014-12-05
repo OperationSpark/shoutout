@@ -1,24 +1,15 @@
 body, .ion-content, .view, .pane  {
 	/* Change the background color */
-	background: green;
+	
 }
 
 .bar.bar-stable {
 	/* Give the header a background, border, and change the color of the font */
-	background: black;
-}
-
-.bar.bar-stable .title {
-	color: white;
-	/* Increase font size and make uppercase */
-}
-
-.shout-item {
-	background: #fff;
-	border: 1px solid #ccc;
-	padding: 10px 15px;
-	position: relative;
 	
+}
+
+h1.title {
+	/* Increase font size and make uppercase */
 }
 
 .shouts .item {
@@ -41,11 +32,11 @@ body, .ion-content, .view, .pane  {
 
 .icon {
 	/* Increase the font-size of the icons */ 
-	font-size: 25px;
+	
 }
 
 .menu .item {
-	font-size: 20px;
+	
 }
 
 ion-content {
@@ -91,6 +82,14 @@ ion-side-menu .list {
 	display: block;
 	content: " ";
 	position: absolute;
+}
+
+.shout-item {
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 10px 15px;
+	position: relative;
+	
 }
 
 .has-header {
