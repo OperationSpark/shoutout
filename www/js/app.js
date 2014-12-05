@@ -25,6 +25,8 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
       templateUrl: "templates/menu.html",
       controller: 'AppCtrl'
     })
+
+    // TODO 1 : Create the app.welcome state //
     .state('app.welcome', {
       url: "/welcome",
       views: {
@@ -34,6 +36,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
         }
       }
     })
+
     .state('app.shoutout', {
       url: "/shoutout",
       views: {
@@ -43,6 +46,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
           }
       }
     })
+
     .state('app.shouted', {
       url: "/shouted/:shoutId",
       views: {
@@ -52,6 +56,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
           }
       }
     })
+
     .state('app.profile', {
       url: "/profile",
       views: {
@@ -61,6 +66,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
           }
       }
     })
+
     .state('app.shouts', {
       url: "/shouts",
       views: {
@@ -70,6 +76,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
         }
       }
     })
+
     .state('app.shout', {
       url: "/shouts/:shoutId",
       views: {
@@ -79,6 +86,7 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
         }
       }
     });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/welcome');
 });
