@@ -90,3 +90,7 @@ ion-side-menu .list {
 	position: absolute;
 }
 
+.has-header {
+	top: 64px;
+}
+

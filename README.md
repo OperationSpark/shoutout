@@ -94,7 +94,7 @@ If you want to go crazy you can also choose different colors for the icons and b
 You'll find the CSS selectors for the main background, header background, and text at the top of the file. Save the file and check out your changes. You should see some new colors!
 
 ### Padding
-
+We could use some more space around the edges of the main content element. Find the `ion-content` selector in the CSS file and add padding to all four sides. Checkout an example [here](http://www.w3schools.com/css/css_padding.asp) to learn how to do that. Save the file and see how much space you've added. Adjust the amount of padding on each side until you find an amount you're comfortable with. 
 
 ## Editing and saving in Ionic
 Save files in Cloud 9 by pressing ctrl + S on the keyboard. When you save a file there's no need to refresh the page. The changes you make are updated in real time as soon as you save. 
@@ -113,6 +113,7 @@ You need to include the icon class and then the class for the specific icon. Fin
 For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. You can copy and paste the first menu item to make the rest. Remove the `ng-click="login()"` since that only applies to the login link. Create two more menu items called "Shouts" and "Profile." Choose proper icons for them as well. 
 
 Save your work and view the menu. You should see an icon to the left of the text for each menu item. It will look something like this:
+
 <img src="http://i.imgur.com/OYsfYXs.png" />
 
 
@@ -133,7 +134,7 @@ instead of the form tag. Open the shoutout.html file in /templates. You'll see a
 * A text field to say where they work
 * A file upload field to upload an image
 
-The first two, both text fields, will be almost identical. Create opening and closing `<label>` tags. Give it two classes. One will be `item` and the other is `item-input`. These classes are adding some styling to the form fields. Inside of the `<label>' tags we'll need a form element. That element will be the `<input>` tag. Since these are text fields, give the input a type of text. Notice that the `<input>` tag doesn't have a closting tag, but the  In HTML you can put text inside of a textbox to prompt the user as to what they need to enter. Inside the input tag add some placeholder text. You can see how to use both the type and placeholder attributes [here](http://www.w3schools.com/tags/att_input_placeholder.asp). The text should be something like "Who helped you out?"
+The first two, both text fields, will be almost identical. Create opening and closing `<label>` tags. Give it two classes. One will be `item` and the other is `item-input`. These classes are adding some styling to the form fields. Inside of the `<label>` tags we'll need a form element. That element will be the `<input>` tag. Since these are text fields, give the input a type of text. Notice that the `<input>` tag doesn't have a closting tag, but the  In HTML you can put text inside of a textbox to prompt the user as to what they need to enter. Inside the input tag add some placeholder text. You can see how to use both the type and placeholder attributes [here](http://www.w3schools.com/tags/att_input_placeholder.asp). The text should be something like "Who helped you out?"
 
 Do the exact same thing underneath, with label and input tags, and make the placeholder text something like "Where do they work?"
 
