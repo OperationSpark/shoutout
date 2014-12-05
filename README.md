@@ -4,12 +4,15 @@ Shout Out - Design Elements
 Shout Out is an app available on both iOS and Android created by Operation Spark to serve as an intro into native app development using the [Ionic Framework](http://ionicframework.com/). 
 
 ## User Experience
-User Experience (UX) involves a person's behaviors, attitudes, and emotions about using a particular product, system or service. In regards to web products the user experience encompasses every interaction you have with a product. That includes not only while using the application itself but also the emails you receive, how easy the login flow may be, and how soon you get a response after submitting a support request.  
+User Experience (UX) involves a person's behaviors, attitudes, and emotions about using a particular product, system or service.User experience encompasses all aspects of the end-user's interaction with the company, its services, and its products. That includes not only while using the application itself but also the emails you receive, how easy the login flow may be, and how soon you get a response after submitting a support request.  
+
+The first requirement for an exemplary user experience is to meet the exact needs of the customer, without fuss or bother. Next comes simplicity and elegance that produce products that are a joy to own, a joy to use. True user experience goes far beyond giving customers what they say they want, or providing checklist features. In order to achieve high-quality user experience in a company's offerings there must be a seamless merging of the services of multiple disciplines, including engineering, marketing, graphical and industrial design, and interface design.
 
 ### User Stories
 A user story is an explanation, in a few sentences, of what a user needs to do while using a product. User stories are common in agile software development and answer the question of who, what, and why in a simple way. 
 
 Examples user stories: 
+
 **Dropbox**
 
 As a user, I can *easily* sync files across all of my devices.
@@ -29,6 +32,8 @@ The user interface is the space where interaction between humans and machines oc
 Wireframes are like blueprints for websites. They show various screens that will eventually be developed into a useable application. Wireframes help show how an application will function and how to navigate through an application and don't typically make use of colors, graphics, or any styling. Wireframes can be made on a whiteboard, paper, or on the computer. 
 
 ![](http://www.flairbuilder.com/img/wireframe-samples/wireframe-example-large-1.png)
+
+Create a free account on [Balsamiq](https://balsamiq.com/products/mockups/mybalsamiq/) and play around with creating some basic wireframes
 
 
 ## Colors
@@ -73,13 +78,7 @@ Ok, so our app is loaded! You should be able to see the app by clicking on the l
 Ionic uses their own custom HTML tags such as `<ion-content>`, `<ion-list>`, and `<ion-item>`. Most of the tags are self explanatory when you look at content or list, for example.  
 
 ## CSS
-Edit the custom.css inside the css/ directory and follow the instructions inside of each CSS selector. 
-
-```CSS
-.shouts .item {
-	/* Remove the border */
-}
-```
+We're going to work on some styling to make the app look a lot less bland. 
 
 ### Colors
 First we need to choose a color scheme. Remember that color scheme is important! Visit [Adobe Color](https://color.adobe.com/explore/newest/?time=all) to explore some nice color schemes. Choose three for the app. 
@@ -92,6 +91,9 @@ You'll need a different color for each of these:
 If you want to go crazy you can also choose different colors for the icons and buttons. In order to find the hex value for each color on Adobe Color you can hover over a palette, click "Edit," and you can copy the HEX value which you'll find below each color. 
 
 You'll find the CSS selectors for the main background, header background, and text at the top of the file. Save the file and check out your changes. You should see some new colors!
+
+### Header text
+The text in the bar at the top could be larger. Go ahead and find the `.bar.bar-stable .title` selector and change the color, and increase the font size to 25 pixels. Also let's make it stand out more by making the text all uppercase. Learn how to do that [here](http://www.w3schools.com/cssref/pr_text_text-transform.asp).
 
 ### Padding
 We could use some more space around the edges of the main content element. Find the `ion-content` selector in the CSS file and add padding to all four sides. Checkout an example [here](http://www.w3schools.com/css/css_padding.asp) to learn how to do that. Save the file and see how much space you've added. Adjust the amount of padding on each side until you find an amount you're comfortable with. 
@@ -138,9 +140,9 @@ The first two, both text fields, will be almost identical. Create opening and cl
 
 Do the exact same thing underneath, with label and input tags, and make the placeholder text something like "Where do they work?"
 
-So you should have an input tag with a label tag wrapped around it and nd there should be two which are identical but have different placeholder text. 
+So you should have an input tag with a label tag wrapped around it and there should be two which are identical but have different placeholder text. 
 
-Last but not least we need a file upload field to add a photo. 
+Last but not least we need a way to submit the form and that's with a button. We can do that with the `<button>` tag. Create an open and closting button tag. Inside the tag we need some text for the button. Most form buttons just say submit but that's boring. Type "Shout out!" instead. 
 
 
 

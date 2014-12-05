@@ -1,10 +1,16 @@
 body, .ion-content, .view, .pane  {
 	/* Change the background color */
+	background: green;
 }
 
 .bar.bar-stable {
 	/* Give the header a background, border, and change the color of the font */
+	background: black;
+}
 
+.bar.bar-stable .title {
+	color: white;
+	/* Increase font size and make uppercase */
 }
 
 .shout-item {
@@ -52,10 +58,7 @@ ion-content {
 	padding: 10px 0px 0px 0px;
 }
 
-.bar.bar-stable .title {
-	color: #000;
-	/* Increase font size and make uppercase */
-}
+
 
 ion-side-menu .list {
 	margin-top: 44px;
