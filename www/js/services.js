@@ -67,23 +67,64 @@ angular.module('shoutout.services', ['ngResource'])
 	        });
 	    },
 
+	    shoutout: function (facebookId, shoutout, callback) {
+	    	FB.api(
+                '/' + facebookId + '/feed', 
+                'post', 
+                {message: shoutout}, 
+                function function_name (response) {
+                	var err;
+                	var shoutId;
+                	if (response && !response.error) {
+                		shoutId = response.id
+                		console.log('shoutout succeeded: %s', shoutId);
+                	} else {
+                		err = response.error;
+                		console.log('shoutout failed: %s', response.error);
+                	}
+                    callback(err, shoutId);
+                }
+            );
+	    },
+
 		shouts: function (callback) {
 			facebook.api(
 		        "/498914393584826/feed",
 		        function (response) {
-		          if (response && !response.error) {
-		            var posts = response.data;
-		            var shouts = [];
-		            for (var i = 0; i < posts.length; i++) {
-		                var post = posts[i];
-		                if (post.hasOwnProperty('message') && /^SHOUTOUT:/i.exec(post.message)) {
-		                    shouts.push(post);    
-		                }
-		            }
-		            callback(shouts);
-		          }
+		        	var err;
+		        	var shouts = [];
+		          	if (response && !response.error) {
+		            	var posts = response.data;
+		            
+			            for (var i = 0; i < posts.length; i++) {
+			                var post = posts[i];
+			                if (post.hasOwnProperty('message') && /^SHOUTOUT:/i.exec(post.message)) {
+			                    shouts.push(post);    
+			                }
+			            }
+		          	} else {
+		          		err = response.error;
+		          	}
+		          	callback(err, shouts);
 		        }
 		    );
+		},
+
+		shout: function (id, callback) {
+			FB.api(
+		        id,
+		        function (response) {
+		        	var err;
+		        	var shout;
+		          	if (response && !response.error) {
+		                shout = response.message.replace('SHOUTOUT: ', '');
+		          	}
+		          	else {
+		          		err = response.error;
+		          	}
+		          	callback(err, shout);
+		        }
+		    );	
 		},
 
 		getAsyncLoginStatus: function(callback) {
@@ -101,6 +142,10 @@ angular.module('shoutout.services', ['ngResource'])
 
 	    status: function () {
 	    	return _status;
+	    },
+
+	    isLoggedIn: function () {
+	    	return (_status === 'connected');
 	    },
 
 	    txtLogAction: function () {

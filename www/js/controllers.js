@@ -18,7 +18,7 @@ angular.module('shoutout.controllers', ['shoutout.services'])
     };
 
     $scope.updateLoginStatus = function() {
-        if (FacebookService.status() === 'connected') {
+        if (FacebookService.isLoggedIn()) {
             FacebookService.logout(function () {
                 $scope.closeLogin();
                 $state.go("app.welcome");
@@ -40,12 +40,13 @@ angular.module('shoutout.controllers', ['shoutout.services'])
     };
 
     $scope.isLoggedIn = function () {
-        return (FacebookService.status() === 'connected');
+        return FacebookService.isLoggedIn();
     };
 })
 
 .controller('ShoutsCtrl', function($scope, FacebookService) {
-    FacebookService.shouts(function (shouts) {
+    FacebookService.shouts(function (err, shouts) {
+        if (err) return console.log(err);
         $scope.$apply(function() {
             $scope.shouts = shouts;
         });
@@ -53,33 +54,18 @@ angular.module('shoutout.controllers', ['shoutout.services'])
 })
 
 .controller('ShoutCtrl', function($scope, $stateParams) {
-    // TODO : MOVE TO SERVICE //
-    $scope.shouts = [
-        { title: 'John Fraboni did the deed!', id: 1 },
-        { title: 'Max is the Bomb!', id: 2 },
-        { title: 'Grace killed it!', id: 3 },
-        { title: 'Matt is Amazing!', id: 4 },
-        { title: 'Danielle is a Saint!', id: 5 },
-        { title: 'Killed it, Rikey!', id: 6 }
-    ];
-
-    function find (id) {
-        id = parseInt(id);
-        var len = $scope.shouts.length;
-        var shout;
-        for (var i = 0; i < len; i++) {
-            shout = $scope.shouts[i];
-            if (shout.id === id) {
-                return shout;
-            }
-        }
-        return null;
-    }
-    $scope.shout = find($stateParams.shoutId);
+    FacebookService.shout(
+        $stateParams.shoutId, 
+        function (err, shout) {
+            if (err) return console.log(err);
+            $scope.$apply(function() {
+                $scope.shout = shout;
+            });
+    });
 })
 
-.controller('ShoutoutCtrl', function($scope, $state, $stateParams, ShoutService) {
-    $scope.shout = function(name, workplace) {
+.controller('ShoutoutCtrl', function($scope, $state, ShoutService, FacebookService) {
+    $scope.shoutout = function(name, workplace) {
         // TODO : Move this to form validation //
         if (name) {
             var shoutout = 'SHOUTOUT: ' + ShoutService.get(name);
@@ -87,30 +73,25 @@ angular.module('shoutout.controllers', ['shoutout.services'])
                 shoutout += ' ' + name + ' works at ' + workplace + '!'
             }
             console.log(shoutout);
-            
-            FB.api(
-                '/498914393584826/feed', 
-                'post', 
-                {message: shoutout}, 
-                function function_name (response) {
-                    console.log('shoutout result:');
-                    console.log(response);
-                    $state.go("app.shouted", {shoutId: response.id});
-            });
+
+            FacebookService.shoutout('498914393584826', shoutout, function (err, shoutId) {
+                if (err) return console.log(err);
+                $state.go("app.shouted", {shoutId: shoutId});
+            })
             //$state.go("app.shouted", {shoutId: "10152429278741922_10152437354521922"});
         }
     };
 })
 
-.controller('ShoutedCtrl', function($scope, $state, $stateParams) {
-    FB.api(
-        $stateParams.shoutId,
-        function (response) {
-          if (response && !response.error) {
-                $scope.shoutout = response.message.replace('SHOUTOUT: ', '');
-          }
-        }
-    );
+.controller('ShoutedCtrl', function($scope, $stateParams, FacebookService) {
+    FacebookService.shout(
+        $stateParams.shoutId, 
+        function (err, shout) {
+            if (err) return console.log(err);
+            $scope.$apply(function() {
+                $scope.shout = shout;
+            });
+    });
 })
 
 .controller('ProfileCtrl', function($scope, FacebookService) {
