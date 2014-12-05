@@ -1,6 +1,7 @@
 angular.module('shoutout.controllers', ['shoutout.services'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, FacebookService) {
+.controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, FacebookService) {
+
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
         scope: $scope
@@ -12,97 +13,43 @@ angular.module('shoutout.controllers', ['shoutout.services'])
         $scope.modal.hide();
     };
 
-    $scope.login = function() {
+    $scope.openLogin = function() {
         $scope.modal.show();
     };
 
     $scope.updateLoginStatus = function() {
-        if ($scope.status === 'connected') {
-            $scope.fbLogout();
+        if (FacebookService.status() === 'connected') {
+            FacebookService.logout(function () {
+                $scope.closeLogin();
+                $state.go("app.welcome");
+            });
         } else {
-            $scope.fbLogin();
+            FacebookService.login(function () {
+                $scope.closeLogin();
+                $state.go("app.shouts");
+            });
         }
     };
 
-    $scope.fbLogin = function() {
-        FB.login(function(response) {
-            if (response.status === 'connected') {
-                console.log('Facebook login succeeded');
-                $scope.closeLogin();
-            } else {
-                alert('Facebook login failed');
-            }
-            setStatus(response.status);
-        }, 
-        {scope: 'publish_actions'});
-        //     {scope: 'read_stream,email,publish_actions,publish_stream'});
+    $scope.txtLogAction = function () {
+        return FacebookService.txtLogAction();
     };
 
-    $scope.fbLogout = function() {
-        FB.logout(function(response) {
-            console.log('Facebook logout succeeded');
-            $scope.closeLogin();
-            setStatus('disconnected');
-        });
+    $scope.txtLogActionFacebook = function () {
+        return FacebookService.txtLogActionFacebook();
     };
-
-    $scope.getFbLoginStatus = function(callback) {
-        FB.getLoginStatus(function(response) {
-            setStatus(response.status);
-        });  
-    } 
-
-    /**
-     * Given the user's login status, set some values 
-     * on the scope used to set state on the view
-     */
-    function setStatus (status) {
-        $scope.status = status;
-            if (status === 'connected') {
-                $scope.txtLogAction = "Logout";
-                $scope.txtLogActionFacebook = "of Facebook"
-            } else {
-                $scope.txtLogAction = "Login";
-                $scope.txtLogActionFacebook = "with Facebook"
-            }
-    }
-    $scope.setStatus = setStatus;
 
     $scope.isLoggedIn = function () {
-        return ($scope.status === 'connected');
-    }
-
-    var init = function () {
-        var promise = FacebookService.init();
-        promise.then(function(FB) {
-          FB.getLoginStatus(function(response) {
-                setStatus(response.status);
-            });  
-        });
+        return (FacebookService.status() === 'connected');
     };
-    // and fire it after definition
-    init();
 })
 
-.controller('ShoutsCtrl', function($scope) {
-    FB.api(
-        "/498914393584826/feed",
-        function (response) {
-          if (response && !response.error) {
-            var posts = response.data;
-            var shouts = [];
-            for (var i = 0; i < posts.length; i++) {
-                var post = posts[i];
-                if (post.hasOwnProperty('message') && /^SHOUTOUT:/i.exec(post.message)) {
-                    shouts.push(post);    
-                }
-            }
-            $scope.$apply(function() {
-                $scope.shouts = shouts;
-            });
-          }
-        }
-    );
+.controller('ShoutsCtrl', function($scope, FacebookService) {
+    FacebookService.shouts(function (shouts) {
+        $scope.$apply(function() {
+            $scope.shouts = shouts;
+        });
+    })
 })
 
 .controller('ShoutCtrl', function($scope, $stateParams) {
@@ -166,17 +113,16 @@ angular.module('shoutout.controllers', ['shoutout.services'])
     );
 })
 
-.controller('ProfileCtrl', function($scope) {
-    openFB.api({
-        path: '/me',
-        params: {fields: 'id,name'},
-        success: function(user) {
+.controller('ProfileCtrl', function($scope, FacebookService) {
+    FacebookService.me(function (response) {
+        if (response && !response.error) {
             $scope.$apply(function() {
-                $scope.user = user;
+                $scope.user = response;
             });
-        },
-        error: function(error) {
-            alert('Facebook error: ' + error.error_description);
         }
-    });
+    })             
+})
+
+.controller('WelcomeCtrl', function($scope, FacebookService) {
+    
 });

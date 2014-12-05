@@ -1,7 +1,7 @@
 angular.module('shoutout', ['ionic', 'shoutout.controllers'])
 
 .run(function($ionicPlatform) {
-  
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -24,6 +24,15 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
       abstract: true,
       templateUrl: "templates/menu.html",
       controller: 'AppCtrl'
+    })
+    .state('app.welcome', {
+      url: "/welcome",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/welcome.html",
+          controller: 'WelcomeCtrl'
+        }
+      }
     })
     .state('app.shoutout', {
       url: "/shoutout",
@@ -71,6 +80,6 @@ angular.module('shoutout', ['ionic', 'shoutout.controllers'])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/shouts');
+  $urlRouterProvider.otherwise('/app/welcome');
 });
 

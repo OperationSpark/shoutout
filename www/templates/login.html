@@ -1,6 +1,6 @@
 <div class="modal">
   <ion-header-bar>
-    <h1 class="title">{{txtLogAction}}</h1>
+    <h1 class="title">{{txtLogAction()}}</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeLogin()">Close</button>
     </div>
@@ -8,7 +8,7 @@
   <ion-content>
     <label class="item">
       <button class="button button-block button-positive" ng-click="updateLoginStatus()">
-        {{txtLogAction + ' ' + txtLogActionFacebook}} 
+        {{txtLogAction() + ' ' + txtLogActionFacebook()}} 
       </button>
     </label>
   </ion-content>

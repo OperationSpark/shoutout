@@ -2,6 +2,13 @@ body, .ion-content, .view, .pane  {
 	background: #f7f6f1;
 }
 
+.center {
+    top: 50%;
+    position: absolute !important;
+    margin:0 auto;
+    width:100%;
+}
+
 .shout-item {
 	background: #fff;
 	border: 1px solid #ccc;

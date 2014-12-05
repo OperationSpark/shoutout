@@ -19,33 +19,97 @@ angular.module('shoutout.services', ['ngResource'])
     	get: function (name) {
     		return shouts[randomNumberBetween(0, shouts.length-1)].replace('_', name);
     	}
-
     }
 })
 
-.factory('FacebookService', function ($q) {
+.factory('FacebookService', function () {
+	var facebook = window.FB;
+	setStatus(facebook.status);
+
+	/*
+	 * A few properties used by views reflecting the user's login status.
+	 */
+	var _status
+	var _txtLogAction;
+	var _txtLogActionFacebook;
+
+    function setStatus (status) {
+        _status = status;
+
+        if (_status === 'connected') {
+            _txtLogAction = "Logout";
+            _txtLogActionFacebook = "of Facebook"
+        } else {
+            _txtLogAction = "Login";
+            _txtLogActionFacebook = "with Facebook"
+        }
+    }
+
 	return {
-		init: function () {
-			var deferred = $q.defer();
+		login: function (callback) {
+			facebook.login(function(response) {
+	            if (response.status === 'connected') {
+	                console.log('Facebook login succeeded');
+	            } else {
+	                alert('Facebook login failed');
+	            }
+	            setStatus(response.status);
+	            callback();
+	        }, 
+	        {scope: 'publish_actions'});
+		},
 
-			window.fbAsyncInit = function() {
-		        FB.init({
-		          appId      : '1502775536665826',
-		          xfbml      : true,
-		          version    : 'v2.1'
-		        });
-		        deferred.resolve(FB);
-		      };
+		logout: function(callback) {
+	        facebook.logout(function(response) {
+	            console.log('Facebook logout succeeded');
+	            setStatus('disconnected');
+	            callback();
+	        });
+	    },
 
-		      (function(d, s, id){
-		         var js, fjs = d.getElementsByTagName(s)[0];
-		         if (d.getElementById(id)) {return;}
-		         js = d.createElement(s); js.id = id;
-		         js.src = "//connect.facebook.net/en_US/sdk.js";
-		         fjs.parentNode.insertBefore(js, fjs);
-		       }(document, 'script', 'facebook-jssdk'));
-		      
-		      return deferred.promise;
-		}
+		shouts: function (callback) {
+			facebook.api(
+		        "/498914393584826/feed",
+		        function (response) {
+		          if (response && !response.error) {
+		            var posts = response.data;
+		            var shouts = [];
+		            for (var i = 0; i < posts.length; i++) {
+		                var post = posts[i];
+		                if (post.hasOwnProperty('message') && /^SHOUTOUT:/i.exec(post.message)) {
+		                    shouts.push(post);    
+		                }
+		            }
+		            callback(shouts);
+		          }
+		        }
+		    );
+		},
+
+		getAsyncLoginStatus: function(callback) {
+	        facebook.getLoginStatus(function(response) {
+	            setStatus(response.status);
+	        });
+	    },
+
+	    me: function (callback) {
+	    	facebook.api(
+		        "/me",
+		        callback
+		    );
+	    },
+
+	    status: function () {
+	    	return _status;
+	    },
+
+	    txtLogAction: function () {
+	    	return _txtLogAction;
+	    },
+
+	    txtLogActionFacebook: function () {
+	    	return _txtLogActionFacebook;
+	    }
+
 	}
 });
