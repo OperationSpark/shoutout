@@ -47,11 +47,25 @@ A logo is the graphical mark used to represent your brand. Logos are either pure
 ## Icons
 Icons serve an important place in web design. They help users navigate without using text links and help enrich interfaces without taking up a lot of space. 
 
+Take a look at these Facebook icons. Do you know what each of them means?
+<img src="http://i.imgur.com/nLDgoY5.png" />
+
 # Lesson 
 In the following lesson you'll edit the HTML and CSS to change the look of the app.
 
-## What is Ionic, and where does it fit?
-Ionic is an HTML5 mobile app development framework targeted at building hybrid mobile apps. Hybrid apps are essentially small websites running in a browser shell in an app that have access to the native platform layer. Hybrid apps have many benefits over pure native apps, specifically in terms of platform support, speed of development, and access to 3rd party code.
+## What is the Ionic Framework, and where does it fit?
+Ionic is an HTML5 mobile app development framework targeted at building hybrid mobile apps. Hybrid apps are essentially small websites running in a browser shell in an app that have access to the native platform layer. Hybrid apps have many benefits over pure native apps, specifically in terms of platform support, speed of development, and access to 3rd party code. You can read more about Ionic on [their website here](http://ionicframework.com/). 
+
+## First things first
+1. Login to Cloud 9 at [https://c9.io](https://c9.io)
+2. Click Create New Workspace > Clone From URL
+3. Paste this URL where it says Source URL: https://github.com/OperationSpark/shoutout.git
+4. Wait for your instance to finish loading and open it. It's called Shoutout.
+5. Click on the terminal window at the bottom and type `npm install -g cordova ionic` which installs the Ionic Framework onto Cloud 9.
+6. Once it's done we need to switch to a different Git branch by typing `git checkout Design`
+7. And finally type `ionic serve $PORT` to load up the app. If it gives you two options like the image below just choose the first one by typing 1 and pressing enter.
+
+<img src="http://i.imgur.com/YVsiZbi.png" />
 
 ## HTML
 Ionic uses their own custom HTML tags such as `<ion-content>`, `<ion-list>`, and `<ion-item>`. Most of the tags are self explanatory when you look at content or list, for example.  
@@ -65,7 +79,14 @@ Edit the custom.css inside the css/ directory and follow the instructions inside
 }
 ```
 
-Make it your own by choosing your own background colors, font colors, spacing, and borders. Remember that color scheme is important! Check out [Adobe Color](https://color.adobe.com/explore/newest/?time=all) to explore some nice color schemes.  
+First we need to choose a color scheme. Remember that color scheme is important! Visit [Adobe Color](https://color.adobe.com/explore/newest/?time=all) to explore some nice color schemes. Choose three or four colors for the app. 
+
+You'll need a different color for each of these:
+* The header
+* The background of the app itself
+* The text
+
+If you want to go crazy you can also choose different colors for the icons and buttons. In order to find the hex value for each color on Adobe Color you can hover over a palette, click "Edit," and you can copy the HEX value which you'll find below each color. 
 
 ## Editing and saving in Ionic
 When you save a file there's no need to refresh the page. The changes you make are updated in real time as soon as you save. 
@@ -81,10 +102,9 @@ You need to include the icon class and then the class for the specific icon. Fin
 
 For the second menu item, make the menu item itself "Shoutout" and choose a proper icon like in the last step. You can copy and paste the first menu item to make the rest. Remove the `ng-click="login()"` since that only applies to the login link. Create two more menu items called "Shouts" and "Profile." Choose proper icons for them as well. 
 
-Save your work and view the menu. You should see an icon to the left of the text for each menu item. 
+Save your work and view the menu. You should see an icon to the left of the text for each menu item. It will look something like this:
+<img src="http://i.imgur.com/OYsfYXs.png" />
 
-The menu should now look something like the image below.
-<img src="http://cl.ly/image/0B1d3q2C0K1q" />
 
 This is a good start but the icons and text are too small. How can you increase the size of the icons and menu items? With CSS! Let's go into the custom.css file in /css to make some edits. Find the `.icon` selector and set the font size to 25 pixels. Save the file to look at your changes. You can see that the icons are now bigger. Now let's do the same for the text. Find the `.menu .item` selector and set the font size to 20 pixels. You can see that the icons don't line up vertically centered with the text. Add an `item-icon-left` class to each `ion-item` element to make that happen. Now our menu is done!
 
@@ -92,9 +112,11 @@ This is a good start but the icons and text are too small. How can you increase 
 Now we're going to style the page where you can add a shout out. The main element in this page is the form. Forms are a great way to collect data from users. In most cases users submit a form and the data is sent to a server for processing. 
 
 When you post on Facebook you are submitting a form:
-<img src="http://cl.ly/image/2M2p3D3j1I1V" />
+<img src="http://i.imgur.com/04Snpkf.png" />
 
 In our case, the form creates a post on Facebook. 
+
+
 
 
 
