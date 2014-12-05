@@ -2,6 +2,11 @@ body, .ion-content, .view, .pane  {
 	/* Change the background color */
 }
 
+.bar.bar-stable {
+	/* Give the header a background, border, and change the color of the font */
+
+}
+
 .shout-item {
 	background: #fff;
 	border: 1px solid #ccc;
@@ -37,10 +42,23 @@ body, .ion-content, .view, .pane  {
 	font-size: 20px;
 }
 
-.glyphicon-bullhorn {
-	font-size: 25px;
-	padding-right: 10px;
-	color: #06D9F2;
+ion-content {
+	/* Put some padding around the main content area */
+	padding: 25px 25px;
+}
+
+.shouts .item-complex .item-content {
+	background: #f7f6f1;
+	padding: 10px 0px 0px 0px;
+}
+
+.bar.bar-stable .title {
+	color: #000;
+	/* Increase font size and make uppercase */
+}
+
+ion-side-menu .list {
+	margin-top: 44px;
 }
 
 .shout-item:before {
@@ -70,34 +88,5 @@ body, .ion-content, .view, .pane  {
 	display: block;
 	content: " ";
 	position: absolute;
-}
-
-/* Ionic overrides */
-
-
-.bar.bar-stable {
-	/* Give the header a background, border, and change the color of the font */
-
-}
-
-
-
-ion-content {
-	/* Put some padding around the main content area */
-}
-
-.shouts .item-complex .item-content {
-	background: #f7f6f1;
-	padding: 10px 0px 0px 0px;
-}
-
-.bar.bar-stable .title {
-	color: #fff;
-	font-size: 25px;
-	text-transform: uppercase;
-}
-
-ion-side-menu .list {
-	margin-top: 44px;
 }
 
