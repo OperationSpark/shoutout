@@ -66,7 +66,6 @@ angular.module('shoutout.controllers', ['shoutout.services'])
 
 .controller('ShoutoutCtrl', function($scope, $state, ShoutService, FacebookService) {
     $scope.shoutout = function(name, workplace) {
-        // TODO : Move this to form validation //
         if (name) {
             var shoutout = 'SHOUTOUT: ' + ShoutService.get(name);
             if (workplace) {
@@ -74,24 +73,15 @@ angular.module('shoutout.controllers', ['shoutout.services'])
             }
             console.log(shoutout);
 
-            FacebookService.shoutout('498914393584826', shoutout, function (err, shoutId) {
-                if (err) return console.log(err);
-                $state.go("app.shouted", {shoutId: shoutId});
-            })
-            //$state.go("app.shouted", {shoutId: "10152429278741922_10152437354521922"});
+            // TODO 2 : Use the FacebookService to post a shoutout //
+            
         }
     };
 })
 
 .controller('ShoutedCtrl', function($scope, $stateParams, FacebookService) {
-    FacebookService.shout(
-        $stateParams.shoutId, 
-        function (err, shout) {
-            if (err) return console.log(err);
-            $scope.$apply(function() {
-                $scope.shout = shout;
-            });
-    });
+    // TODO 4 : Call FacebookService.shout to retreive the shout //
+    
 })
 
 .controller('ProfileCtrl', function($scope, FacebookService) {
