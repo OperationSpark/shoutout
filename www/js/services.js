@@ -58,17 +58,12 @@ angular.module('shoutout.services', ['ngResource'])
 	        }, 
 	        {scope: 'publish_actions'});
 		},
-
-		logout: function(callback) {
-	        facebook.logout(function(response) {
-	            console.log('Facebook logout succeeded');
-	            setStatus('disconnected');
-	            callback();
-	        });
-	    },
+		
+		// TODO 4 : create the logout function //
+		
 
 	    shoutout: function (facebookId, shoutout, callback) {
-	    	FB.api(
+	    	facebook.api(
                 '/' + facebookId + '/feed', 
                 'post', 
                 {message: shoutout}, 
@@ -111,7 +106,7 @@ angular.module('shoutout.services', ['ngResource'])
 		},
 
 		shout: function (id, callback) {
-			FB.api(
+			facebook.api(
 		        id,
 		        function (response) {
 		        	var err;
